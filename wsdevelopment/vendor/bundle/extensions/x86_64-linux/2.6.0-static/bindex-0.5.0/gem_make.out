@@ -1,0 +1,15 @@
+current directory: /home/juls/Desarrollo-Web/wsdevelopment/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+/home/juls/.rbenv/versions/2.6.1/bin/ruby -I /home/juls/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20190312-25919-14tm3o3.rb extconf.rb
+creating Makefile
+
+current directory: /home/juls/Desarrollo-Web/wsdevelopment/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/juls/Desarrollo-Web/wsdevelopment/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/juls/Desarrollo-Web/wsdevelopment/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20190312-25919-7culzc/bindex
