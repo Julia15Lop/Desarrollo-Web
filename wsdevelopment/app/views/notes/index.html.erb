@@ -1,0 +1,18 @@
+<h1>Listing notes</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @note.each do |note| %>
+    <tr>
+      <td><%= note.title %></td>
+      <td><%= note.text %></td>
+      <td><%= link_to 'Show', note_path(note) %></td>
+    </tr>
+  <% end %>
+  <%= link_to 'New note', new_note_path %>
+</table>
