@@ -4,7 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
-    <th></th>
+    <th colspan="2"></th>
   </tr>
  
   <% @note.each do |note| %>
@@ -12,6 +12,7 @@
       <td><%= note.title %></td>
       <td><%= note.text %></td>
       <td><%= link_to 'Show', note_path(note) %></td>
+      <td><%= link_to 'Edit', edit_note_path(note) %></td>
     </tr>
   <% end %>
   <%= link_to 'New note', new_note_path %>
