@@ -9,9 +9,12 @@ class NotesController < ApplicationController
 	def new
 		@note=Note.new
 	end
+	def edit
+    		@note = Note.find(params[:id])
+  	end
 
 	def update
-  	@note = Article.find(params[:id])
+  	@note = Note.find(params[:id])
  
   	if @note.update(note_params)
     		redirect_to @note
@@ -24,8 +27,11 @@ class NotesController < ApplicationController
 	def create
 		@note = Note.new(note_params)
  
-  		@note.save
-  		redirect_to @note
+  		if @note.save
+      		  redirect_to @note
+    		else
+      		  render 'new'
+    end
   	end
 
   	private
