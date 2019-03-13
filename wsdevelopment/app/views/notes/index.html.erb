@@ -12,6 +12,9 @@
       <td><%= note.title %></td>
       <td><%= note.text %></td>
       <td><%= link_to 'Show', note_path(note) %></td>
+      <td><%= link_to 'Delete', note_path(note),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   <%= link_to 'New note', new_note_path %>
