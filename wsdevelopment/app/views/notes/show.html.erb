@@ -1,12 +1,28 @@
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @note.text %>
-</p>
+<body>
+  <header class="container-fluid">
+    <div class="center">
+      <h1>Show note</h1>
+    </div>
+  </header>
+  <div id="main-content" class="container">
+    <div class="row center">
+      <%= form_with scope: :note, class: 'col-xs-6', url: notes_path, local: true do |form| %>
+        <p>
+          <%= form.label :title %><br>
+          <%= form.text_field :title, class: 'col-xs-12', :disabled => true %>
+        </p>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+        <p>
+          <%= form.label :text %><br>
+          <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
+        </p>
+
+      <% end %>
+
+    </div>
+    <div class="row center col-xs-12">
+      <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-default with-margin' %>
+      <%= link_to 'Back', notes_path, class: 'btn btn-info with-margin' %>
+    </div>
+  </div>
+</body>
