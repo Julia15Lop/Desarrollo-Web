@@ -9,21 +9,21 @@
 
     <div class="row">
       <% @note.each do |note| %>
-        <div class="note col-sm-6 col-md-3">
-          <div class="note-title col-md-12">
+        <div class="note col-xs-12 col-sm-6 col-md-3">
+          <div class="note-title col-xs-12">
             <%= note.title %>
           </div>
-          <div class="note-text col-md-12">
+          <div class="note-text col-xs-12">
             <%= note.text %>
           </div>
-          <div class="note-actions col-md-12">
-            <div class="col-md-4 center">
+          <div class="note-actions col-xs-12">
+            <div class="col-xs-4 center">
               <%= link_to 'Show', note_path(note), class: 'btn btn-default' %>
             </div>
-            <div class="col-md-4 center">
+            <div class="col-xs-4 center">
               <%= link_to 'Edit', edit_note_path(note), class: 'btn btn-default' %>
             </div>
-            <div class="col-md-4 center">
+            <div class="col-xs-4 center">
               <%= link_to 'Delete', note_path(note), class: 'btn btn-danger',
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %>

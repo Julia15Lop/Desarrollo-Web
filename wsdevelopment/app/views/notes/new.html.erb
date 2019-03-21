@@ -4,9 +4,10 @@
       <h1>New note</h1>
     </div>
   </header>
+
   <div id="main-content" class="container">
     <div class="row center">
-      <%= form_with scope: :note	, url: notes_path, local: true do |form| %>
+      <%= form_with scope: :note, class: 'col-xs-6', url: notes_path, local: true do |form| %>
         <% if @note.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
             <h2>
@@ -22,12 +23,12 @@
         <% end %>
         <p>
           <%= form.label :title %><br>
-          <%= form.text_field :title %>
+          <%= form.text_field :title, class: 'col-xs-12' %>
         </p>
 
         <p>
           <%= form.label :text %><br>
-          <%= form.text_area :text %>
+          <%= form.text_area :text, class: 'col-xs-12', style: 'height: 200px'%>
         </p>
 
         <p>

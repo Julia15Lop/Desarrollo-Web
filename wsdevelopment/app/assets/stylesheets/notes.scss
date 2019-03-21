@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.col-md-3{
-  width: 23%;
-}
-
 .center{
   display: flex;
   justify-content: center;
@@ -18,7 +14,6 @@ header{
 }
 
 body{
-  //background-color: #BDBDBD;
   font-size: 20px;
 }
 
@@ -37,6 +32,7 @@ body{
 
 .note-text{
   margin: .33rem 0rem 1rem 0rem;
+  height: 30px;
   overflow: hidden;
 }
 
