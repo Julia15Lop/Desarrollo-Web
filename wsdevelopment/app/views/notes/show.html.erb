@@ -17,6 +17,11 @@
           <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
         </p>
 
+        <p>
+          <%= form.label :image %><br>
+          <%= image_tag(@note.image.url, alt: 'Image', class: 'center', style: 'height: 200px') if @note.image? %>
+        </p>
+
       <% end %>
 
     </div>

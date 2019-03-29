@@ -10,12 +10,22 @@
     <div class="row">
       <% @note.each do |note| %>
         <div class="note col-xs-12 col-sm-6 col-md-3">
-          <div class="note-title col-xs-12">
-            <%= note.title %>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div >
+              <span>
+                <%= image_tag(note.image.url, alt: 'Image', class: 'note-image') if note.image? %>
+              </span>
+            </div>
           </div>
-          <div class="note-text col-xs-12">
-            <%= note.text %>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="note-title col-xs-12">
+              <%= note.title %>
+            </div>
+            <div class="note-text col-xs-12">
+              <%= note.text %>
+            </div>
           </div>
+          
           <div class="note-actions col-xs-12">
             <div class="col-xs-4 center">
               <%= link_to 'Show', note_path(note), class: 'btn btn-default' %>
