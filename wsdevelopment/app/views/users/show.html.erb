@@ -1,0 +1,27 @@
+<body>
+  <header class="container-fluid">
+    <div class="center">
+      <h1>Show user</h1>
+    </div>
+  </header>
+  <div id="main-content" class="container">
+    <div class="row center">
+      <%= form_with scope: :user, class: 'col-xs-6', model: @users, local: true do |form| %>
+        <p>
+          <%= form.label :user_name %><br>
+          <%= form.text_field :user_name, class: 'col-xs-12', :disabled => true %>
+        </p>
+
+        <p>
+          <%= form.label :email %><br>
+          <%= form.text_area :email, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
+        </p>
+
+      <% end %>
+
+    </div>
+    <div class="row center col-xs-12">
+      <%= link_to 'Back', users_path, class: 'btn btn-info with-margin' %>
+    </div>
+  </div>
+</body>

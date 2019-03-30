@@ -6,21 +6,21 @@
   </header>
 
   <div id="main-content" class="container">
+    <% if @note.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2>
+          <%= pluralize(@note.errors.count, "error") %> prohibited
+          this note from being saved:
+        </h2>
+        <ul>
+          <% @note.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="row center">
-      <%= form_with scope: :note, class: 'col-xs-6', url: notes_path, local: true do |form| %>
-        <% if @note.errors.any? %>
-          <div id="error_explanation" class="alert alert-danger">
-            <h2>
-              <%= pluralize(@note.errors.count, "error") %> prohibited
-              this note from being saved:
-            </h2>
-            <ul>
-              <% @note.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+      <%= form_with scope: :note, model: [ :user, @note ], class: 'col-xs-6', local: true do |form| %>
         <p>
           <%= form.label :title %><br>
           <%= form.text_field :title, class: 'col-xs-12' %>
@@ -39,7 +39,7 @@
 
     </div>
     <div class="row center">
-      <%= link_to 'Back', notes_path, class: 'btn btn-info' %>
+      <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
     </div>
   </div>
 </body>

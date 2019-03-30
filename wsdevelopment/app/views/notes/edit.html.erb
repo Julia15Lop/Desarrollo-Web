@@ -7,7 +7,7 @@
 
   <div id="main-content" class="container">
     <div class="row center">
-      <%= form_with(model: @note, class: 'col-xs-6', local: true) do |form| %>
+      <%= form_with(scope: :note, model: [ :user, @note ], class: 'col-xs-6', local: true) do |form| %>
         <% if @note.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
             <h2>
@@ -16,7 +16,7 @@
             </h2>
             <ul>
               <% @note.errors.full_messages.each do |msg| %>
-                <li"><%= msg %></li>
+                <li><%= msg %></li>
               <% end %>
             </ul>
           </div>
@@ -40,7 +40,7 @@
 
     </div>
     <div class="row center">
-      <%= link_to 'Back', notes_path, class: 'btn btn-info' %>
+      <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
     </div>
   </div>
 </body>
