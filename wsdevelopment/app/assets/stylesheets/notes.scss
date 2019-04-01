@@ -8,6 +8,7 @@
   align-items: center;
 }
 
+
 header{
   color: white;
   background-color: #207979;
@@ -36,9 +37,17 @@ body{
   overflow: hidden;
 }
 
+.note-image{
+  height: 80px;
+  width: 100px; 
+  position: relative;
+  padding-top: 1rem;
+  padding-right: 1.5rem;
+}
 .note-actions{
   padding-bottom: 1rem;
 }
+
 
 .with-margin{
   margin: 1rem;
