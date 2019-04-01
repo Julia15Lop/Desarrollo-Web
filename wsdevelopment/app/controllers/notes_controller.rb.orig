@@ -43,11 +43,17 @@ class NotesController < ApplicationController
     redirect_to user_notes_url(@user)
   end
 
+<<<<<<< HEAD
   private
-
   def note_params
-    params.require(:note).permit(:title, :text, :image)
+    params.require(:note).permit(:title, :text)
   end
+=======
+  	private
+  		def note_params
+    		params.require(:note).permit(:title, :text, :image)
+  		end
+>>>>>>> 564233ad0f762e4434ff56d75d8bfb6628c4a65c
 
 
 end

@@ -1,2 +1,28 @@
-<h1>Welcome index</h1>
-<%= link_to 'My Blog', controller: 'notes' %>
+<body>
+  <header class="container-fluid">
+    <div class="center">
+      <h1>Log in</h1>
+    </div>
+  </header>
+
+  <div id="main-content" class="container">
+    <div class="row center">
+      <%= form_with scope: :user, class: 'col-xs-6', local: true do |form| %>
+        <p>
+          <%= form.label :user_name %><br>
+          <%= form.text_field :user_name, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.label :password %><br>
+          <%= form.text_field :password_digest, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.submit 'Sign in'%>
+          <%= link_to 'Sign up', new_user_path, class: 'btn btn-default with-margin' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</body>

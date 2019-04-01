@@ -1,0 +1,55 @@
+<body>
+  <header class="container-fluid">
+    <div class="center">
+      <h1>New user</h1>
+    </div>
+  </header>
+
+  <div id="main-content" class="container">
+    <div class="row center">
+      <%= form_with scope: :user, class: 'col-xs-6', url: users_path, local: true do |form| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2>
+              <%= pluralize(@user.errors.count, "error") %> prohibited
+              this note from being saved:
+            </h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p>
+          <%= form.label :user_name %><br>
+          <%= form.text_field :user_name, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.label :email %><br>
+          <%= form.text_field :email, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.label :password %><br>
+          <%= form.password_field :password, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.label :confirm_password %><br>
+          <%= form.password_field :password_confirmation, class: 'col-xs-12' %>
+        </p>
+
+        <p>
+          <%= form.submit %>
+        </p>
+
+      <% end %>
+
+    </div>
+    <div class="row center">
+      <%= link_to 'Back', root_path, class: 'btn btn-info' %>
+    </div>
+  </div>
+</body>
