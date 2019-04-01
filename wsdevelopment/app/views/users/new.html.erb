@@ -40,7 +40,10 @@
           <%= form.label :confirm_password %><br>
           <%= form.password_field :password_confirmation, class: 'col-xs-12' %>
         </p>
-
+        <p>
+          <%= form.label :admin, 'Admin' %><br>
+          <%= form.radio_button :admin, :checked => false, :value => true %>
+        </p>
         <p>
           <%= form.submit %>
         </p>
