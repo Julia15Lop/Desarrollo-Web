@@ -33,6 +33,11 @@
         </p>
 
         <p>
+          <%= form.label :image %><br>
+          <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center', style: 'padding-bottom: 1rem;') if @note.image? %>
+        </p>
+
+        <p>
           <%= form.submit %>
         </p>
 
