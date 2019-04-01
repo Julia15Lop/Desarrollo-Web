@@ -19,7 +19,7 @@
 
         <p>
           <%= form.label :image %><br>
-          <%= image_tag(@note.image.url, alt: 'Image', class: 'center', style: 'height: 200px') if @note.image? %>
+          <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center') if @note.image? %>
         </p>
 
       <% end %>
