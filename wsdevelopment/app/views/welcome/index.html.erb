@@ -7,7 +7,7 @@
 
   <div id="main-content" class="container">
     <div class="row center">
-      <%= form_with scope: :user, class: 'col-xs-6', local: true do |form| %>
+      <%= form_with class: 'col-xs-6', url: 'login', local: true do |form| %>
         <p>
           <%= form.label :user_name %><br>
           <%= form.text_field :user_name, class: 'col-xs-12' %>
@@ -15,14 +15,20 @@
 
         <p>
           <%= form.label :password %><br>
-          <%= form.text_field :password_digest, class: 'col-xs-12' %>
+          <%= form.password_field :password_digest, class: 'col-xs-12' %>
         </p>
 
         <p>
           <%= form.submit 'Sign in'%>
           <%= link_to 'Sign up', new_user_path, class: 'btn btn-default with-margin' %>
         </p>
-      <% end %>
+
+        <% if flash[:warning] %>
+          <%= flash[:warning] %>
+        <% end %>
+        <% end %>
+
+
     </div>
   </div>
 </body>
