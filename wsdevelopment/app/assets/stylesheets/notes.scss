@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.col-md-3{
+  width: 23%;
+}
+
 .center{
   display: flex;
   justify-content: center;
@@ -39,7 +43,7 @@ body{
 
 .note-image{
   height: 80px;
-  width: 100px; 
+  width: 100px;
   position: relative;
   padding-top: 1rem;
   padding-right: 1.5rem;
@@ -55,7 +59,7 @@ body{
 
 .logout {
   background-color: #FFC107;
-  
+
 }
 .logout:hover {
   background-color: #cc9900;

@@ -1,3 +1,6 @@
+<% if !logged? %>
+  <%= controller.redirect_to root_path %>
+<% end %>
 <body>
   <header class="container-fluid">
     <div class="center">
@@ -41,6 +44,13 @@
           <%= form.label :confirm_password %><br>
           <%= form.password_field :password_confirmation, class: 'col-xs-12' %>
         </p>
+
+        <% if user_session_is_admin? %>
+          <p>
+            <%= form.label :admin, 'Admin' %><br>
+            <%= form.radio_button :admin, :checked => false, :value => true %>
+          </p>
+        <% end %>
 
         <p>
           <%= form.submit %>

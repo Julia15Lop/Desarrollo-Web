@@ -9,7 +9,7 @@ class SessionController < ApplicationController
   		session[:user_name] = @user.user_name
   		if @user.admin
   			redirect_to users_url
-  		else 
+  		else
   			redirect_to user_notes_url(@user)
   		end
   	else
