@@ -8,6 +8,11 @@
   <div id="main-content" class="container">
     <div class="row center">
       <%= form_with class: 'col-xs-6', url: 'login', local: true do |form| %>
+
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+
         <p>
           <%= form.label :user_name %><br>
           <%= form.text_field :user_name, class: 'col-xs-12' %>
@@ -22,12 +27,7 @@
           <%= form.submit 'Sign in'%>
           <%= link_to 'Sign up', new_user_path, class: 'btn btn-default with-margin' %>
         </p>
-
-        <% if flash[:warning] %>
-          <%= flash[:warning] %>
-        <% end %>
-        <% end %>
-
+      <% end %>
 
     </div>
   </div>
