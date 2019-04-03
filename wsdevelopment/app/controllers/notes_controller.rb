@@ -14,33 +14,39 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find(params[:id])
+    if logged?
+      @note = Note.find(params[:id])
 
-    if @note.update(note_params)
-      redirect_to user_notes_url(@note.user_id)
-    else
-      render 'edit'
+      if @note.update(note_params)
+        redirect_to user_notes_url(@note.user_id)
+      else
+        render 'edit'
+      end
     end
   end
 
 
   def create
-    @user = User.find(params[:user_id])
-    @note = @user.notes.create(note_params)
+    if logged?
+      @user = User.find(params[:user_id])
+      @note = @user.notes.create(note_params)
 
-    if @note.save
-      redirect_to user_notes_url(@user)
-    else
-      render 'new'
+      if @note.save
+        redirect_to user_notes_url(@user)
+      else
+        render 'new'
+      end
     end
   end
 
   def destroy
-    @note = Note.find(params[:id])
-    @user = User.find(@note.user_id)
-    @note.destroy
+    if logged?
+      @note = Note.find(params[:id])
+      @user = User.find(@note.user_id)
+      @note.destroy
 
-    redirect_to user_notes_url(@user)
+      redirect_to user_notes_url(@user)
+    end
   end
 
   private
@@ -49,5 +55,7 @@ class NotesController < ApplicationController
     params.require(:note).permit(:title, :text, :image)
   end
 
-
+  def logged?
+    session[:user_name]
+  end
 end
