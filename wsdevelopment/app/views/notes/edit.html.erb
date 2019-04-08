@@ -2,12 +2,7 @@
   <%= controller.redirect_to root_path %>
 <% end %>
 <body>
-  <header class="container-fluid">
-    <div class="center">
-      <h1>Edit note</h1>
-      <%= link_to 'Log Out', '/logout' , class: 'btn btn-primary btn-lg logout' %>
-    </div>
-  </header>
+  <%= render 'layouts/nav' %>
 
   <div id="main-content" class="container">
     <div class="row center">
@@ -39,6 +34,7 @@
         <p>
           <%= form.label :image %><br>
           <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center', style: 'padding-bottom: 1rem;') if @note.image? %>
+          <%= form.file_field :image, class: 'col-xs-12'%>
         </p>
 
         <p>

@@ -2,12 +2,8 @@
   <%= controller.redirect_to root_path %>
 <% end %>
 <body>
-  <header class="container-fluid">
-    <div class="center">
-      <h1>Listing notes</h1>
-      <%= link_to 'Log Out', '/logout', class: 'btn btn-primary btn-lg logout' %>
-    </div>
-  </header>
+
+  <%= render 'layouts/nav' %>
 
   <div id="main-content" class="container">
 
