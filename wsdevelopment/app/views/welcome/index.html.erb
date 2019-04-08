@@ -8,6 +8,7 @@
   <div id="main-content" class="container">
     <div class="row center">
       <%= form_with class: 'col-xs-6', url: 'login', local: true do |form| %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
