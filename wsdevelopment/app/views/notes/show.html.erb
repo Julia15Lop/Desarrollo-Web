@@ -1,32 +1,54 @@
 <% if !logged? %>
-  <%= controller.redirect_to root_path %>
-<% end %>
+<%= controller.redirect_to root_path %>
+<% else %>
+<%= render :partial => "layouts/nav" %>
 <body>
-  <%= render 'layouts/nav' %>
   <div id="main-content" class="container">
-    <div class="row center">
-      <%= form_with(model: [ :user, @note ], class: 'col-xs-6', local: true) do |form| %>
-        <p>
-          <%= form.label :title %><br>
-          <%= form.text_field :title, class: 'col-xs-12', :disabled => true %>
-        </p>
+    <div class="row">
+      <!--Sidebar -->
+      <div class="col-md-1 col-lg-1">
+        <%= render :partial => "layouts/sidebar" %>
+      </div>
+      <!-- /Sidebar -->
+      <div class="col-md-11 col-lg-11">
+        <div class="page-content inset">
+         <!-- Row with title -->
+         <div class="row page-title">
+          <div class="title_left">
+            <div class="x_panel">
+              <h2 style="margin: 9px 0">Note_name </h2> 
+            </div>                
+          </div>
+        </div>
+        <!-- /Row with title -->
+        <div class="row center">
+          <%= form_with(model: [ :user, @note ], class: 'col-xs-6', local: true) do |form| %>
+          <p>
+            <%= form.label :title %><br>
+            <%= form.text_field :title, class: 'col-xs-12', :disabled => true %>
+          </p>
 
-        <p>
-          <%= form.label :text %><br>
-          <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
-        </p>
+          <p>
+            <%= form.label :text %><br>
+            <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
+          </p>
 
-        <p>
-          <%= form.label :image %><br>
-          <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center') if @note.image? %>
-        </p>
+          <p>
+            <%= form.label :image %><br>
+            <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center') if @note.image? %>
+          </p>
 
-      <% end %>
+          <% end %>
 
-    </div>
-    <div class="row center col-xs-12">
-      <%= link_to 'Edit', edit_user_note_url, class: 'btn btn-default with-margin' %>
-      <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
+        </div>
+        <div class="row center col-xs-12">
+          <%= link_to 'Edit', edit_user_note_url, class: 'btn btn-default with-margin' %>
+          <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
+        </div>
+      </div>
     </div>
   </div>
+
+</div>
 </body>
+<% end %>

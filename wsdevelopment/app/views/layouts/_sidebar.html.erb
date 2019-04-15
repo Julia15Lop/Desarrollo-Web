@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "sidebar" %>
+<%= javascript_include_tag "menu" %>
+<div id="wrapper" class="active">
+      <% userId = user_id(session[:user_name])%>
+      <!-- Sidebar -->
+            <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="sidebar" style="font-size: 16px">     
+          <li><%= link_to 'Users List', users_path %></li>
+          <li><%= link_to 'Edit Profile', edit_user_path(userId) %></li>          
+        </ul>
+      </div>
+          
+
+      
+</div>
+
+
