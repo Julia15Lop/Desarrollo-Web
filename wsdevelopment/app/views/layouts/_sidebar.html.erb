@@ -1,13 +1,13 @@
-<%= stylesheet_link_tag "sidebar" %>
-<%= javascript_include_tag "menu" %>
+
 <%= stylesheet_link_tag "custom" %>
 
+<% userId = user_id(session[:user_name])%>
 <div class="left_col scroll-view">
-
+	
   <!-- menu profile quick info -->
   <div class="profile clearfix" style="padding-top: 10px">
     <div class="profile_info">
-      <p>Welcome, Username</p>
+      <p>Welcome, <%= session[:user_name] %></p>
     </div>
     <hr>
   </div>
@@ -19,7 +19,8 @@
       <!-- <h3>General</h3> -->
       <ul class="nav side-menu">
         <!-- Now view -->
-        <li ><a id=""><i class="fa fa-users"></i> Users list </a>
+        <li ><%= link_to '<i class="fa fa-users"></i> Users list'.html_safe, users_path %>
+
 <!--           <ul class="nav child_menu">
             <li id="" >
               <a id="">Infrastructures</a>    
@@ -28,7 +29,7 @@
         </li>
         <!-- /Now view -->
         <!-- Usage view -->
-        <li><a id="usage_nav"><i class="fa fa-pencil"></i> Your Profile </span></a>
+        <li><%= link_to '<i class="fa fa-pencil"></i> Edit profile'.html_safe, edit_user_path(userId)  %>
           <ul class="nav child_menu">
             <li>
               <a id="select_nav">Select Report</a>
