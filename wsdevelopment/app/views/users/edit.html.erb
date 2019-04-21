@@ -1,83 +1,68 @@
 <% if !logged? %>
 <%= controller.redirect_to root_path %>
 <% else %>
+<div class="col-md-9 col-lg-9 right_col">
 
-<%= render :partial => "layouts/nav" %>
-<body>
-  <div id="main-content" class="container">
-    <div class="row">
-      <!--Sidebar -->
-      <div class="col-md-1 col-lg-1">
-        <%= render :partial => "layouts/sidebar" %>
-      </div>
-      <!-- /Sidebar -->
-      <div class="col-md-11 col-lg-11">
-        <div class="page-content inset">
-          <!-- Row with title -->
-          <div class="row page-title">
-            <div class="title_left">
-              <div class="x_panel">
-                <h2 style="margin: 9px 0">Edit your user</h2> 
-              </div>                
-            </div>
-          </div>
-          <!-- /Row with title -->
-          <div class="row center">
-            <%= form_with scope: :user,  model:  @user ,class: 'col-xs-6', url: user_path, local: true do |form| %>
-            <% if @user.errors.any? %>
-            <div id="error_explanation" class="alert alert-danger">
-              <h2>
-                <%= pluralize(@user.errors.count, "error") %> prohibited
-                this user from being saved:
-              </h2>
-              <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-            <% end %>
-            <p>
-              <%= form.label :user_name %><br>
-              <%= form.text_field :user_name, class: 'col-xs-12' %>
-            </p>
-
-            <p>
-              <%= form.label :email %><br>
-              <%= form.text_field :email, class: 'col-xs-12' %>
-            </p>
-
-            <p>
-              <%= form.label :password %><br>
-              <%= form.password_field :password, class: 'col-xs-12' %>
-            </p>
-
-            <p>
-              <%= form.label :confirm_password %><br>
-              <%= form.password_field :password_confirmation, class: 'col-xs-12' %>
-            </p>
-
-            <% if user_session_is_admin? %>
-            <p>
-              <%= form.label :admin, 'Admin' %><br>
-              <%= form.radio_button :admin, :checked => false, :value => true %>
-            </p>
-            <% end %>
-
-            <p>
-              <%= form.submit %>
-            </p>
-
-            <% end %>
-
-          </div>
-          <div class="row center">
-            <%= link_to 'Back', users_path, class: 'btn btn-info' %>
-          </div>
-        </div>  
-      </div>
+  <!-- Row with title -->
+  <div class="row page-title">
+    <div class="title_left">
+      <div class="x_panel">
+        <h2 style="margin: 9px 0">Edit your user</h2> 
+      </div>                
     </div>
+  </div>
+  <!-- /Row with title -->
+  <div class="row center">
+    <%= form_with scope: :user,  model:  @user ,class: 'col-xs-6', url: user_path, local: true do |form| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <p>
+      <%= form.label :user_name %><br>
+      <%= form.text_field :user_name, class: 'col-xs-12' %>
+    </p>
+
+    <p>
+      <%= form.label :email %><br>
+      <%= form.text_field :email, class: 'col-xs-12' %>
+    </p>
+
+    <p>
+      <%= form.label :password %><br>
+      <%= form.password_field :password, class: 'col-xs-12' %>
+    </p>
+
+    <p>
+      <%= form.label :confirm_password %><br>
+      <%= form.password_field :password_confirmation, class: 'col-xs-12' %>
+    </p>
+
+    <% if user_session_is_admin? %>
+    <p>
+      <%= form.label :admin, 'Admin' %><br>
+      <%= form.radio_button :admin, :checked => false, :value => true %>
+    </p>
+    <% end %>
+
+    <p>
+      <%= form.submit %>
+    </p>
+
+    <% end %>
 
   </div>
-</body>
-<% end %>
+  <div class="row center">
+    <%= link_to 'Back', users_path, class: 'btn btn-info' %>
+  </div>
+
+  <% end %>

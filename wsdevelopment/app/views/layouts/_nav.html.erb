@@ -1,26 +1,24 @@
-<header >
-  <div class="row">
-  	<div class="col-md-2 col-sm-2 col-xs-2 " style="float: left; padding-bottom: 20px; font-size: 15px">
-  		<a id="menu-toggle" href="#" ><i id="main_icon" class="glyphicon glyphicon-align-justify" style="cursor: pointer; color: white"></i></a>
-  	</div>
-    <div class="col-md-8 col-sm-8 col-xs-8 center">
-     <!-- <h1>Title View</h1> -->
-    </div>
-    <div class="col-md-2 col-sm-2 col-xs-2 " align="center"style="padding-top: 10px">
-    	<% userId = user_id(session[:user_name])%>
-      	<% userName = session[:user_name]%>
-    	
-	      <div class="dropdown">
-	          <i class="dropdown-toggle" data-toggle="dropdown" style="font-size: 18px; cursor: pointer;" ><%= userName %>
-	          <span class="caret"></span></i>
-	          <ul class="dropdown-menu">
-	            <li><%= link_to 'Edit profile', edit_user_path(userId) %></li>
-	            <li><%= link_to 'Log Out', '/logout' %></li>
-	          </ul>
-	      </div>
-    	
-    </div>
-  </div>
-</header>
+
+<div class="nav_menu ">
+ <div class="col-md-2 col-sm-2 col-xs-2 " style="float: left; padding-left: 15px; padding-top: 10px; font-size: 20px; ">
+  <a id="menu-toggle" href="#" ><i class="glyphicon glyphicon-align-justify" style="cursor: pointer; color: #5a738e;"></i></a>
+</div>
+<div class="col-md-8 col-sm-8 col-xs-8 center">
+ <!-- <h1>Title View</h1> -->
+</div>
+<div class="col-md-2 col-sm-2 col-xs-2 " align="center"style="padding-top: 10px; padding-bottom: 10px">
+ <div class="dropdown">
+  <%= image_tag("usuario.png", :alt => "image") %>
+   <i class="dropdown-toggle" data-toggle="dropdown" style="font-size: 18px; cursor: pointer; color: #5a738e;" >
+     color
+     <span class="caret"></span></i>
+     <ul class="dropdown-menu">
+
+       <li><%= link_to 'Log Out', '/logout' %></li>
+     </ul>
+   </div>
+
+ </div>
+</div>
 
 
