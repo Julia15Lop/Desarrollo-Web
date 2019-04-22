@@ -108,6 +108,11 @@ form:after {
     padding: 10px 20px 0;
     margin-left: 270px
 }
+.right_col{
+    padding: 10px 20px;
+    margin-left: 70px;
+    z-index: 2;
+}
 
 .nav-md .container.body .right_col {
 
@@ -146,6 +151,13 @@ hr {
   width: 70%;
   background-color: white;
 }
+.selected_menu{
+    text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+    background: linear-gradient(#334556, #2C4257), #2A3F54;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+    border-right: 5px solid #d7e6f4;
+}
+
 
 
 .navbar-header {

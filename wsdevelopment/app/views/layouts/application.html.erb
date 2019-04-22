@@ -15,18 +15,22 @@
     
   </head>
 
-  <body>
-    <header>
-      <div class="top_nav">
-        <%= render 'layouts/nav' %>  
-      </div>
-    </header>
-    <main role="main">
-      <div class="col-md-3 left_col ">
-        <%= render 'layouts/sidebar' %>
-      </div>
-
+  <body class="body nav-md ">
+    <% if !logged? %>
       <%= yield %>
-    </main>
+    <% else %>
+      <header>
+        <div class="top_nav">
+          <%= render 'layouts/nav' %>  
+        </div>
+      </header>
+      <main id="main" role="main">
+        <div class="col-md-3 left_col">
+          <%= render 'layouts/sidebar' %>
+        </div>
+
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>
