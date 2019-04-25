@@ -1,54 +1,55 @@
 <% if !logged? %>
-  <%= controller.redirect_to root_path %>
-<% end %>
-<body>
-  <header class="container-fluid">
-    <div class="center">
-      <h1>New note</h1>
-      <%= link_to 'Log Out', '/logout' , class: 'btn btn-primary btn-lg logout' %>
-    </div>
-  </header>
-
-  <div id="main-content" class="container">
-    <% if @note.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h2>
-          <%= pluralize(@note.errors.count, "error") %> prohibited
-          this note from being saved:
-        </h2>
-        <ul>
-          <% @note.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="row center">
-      <%= form_with scope: :note, model: [ :user, @note ], class: 'col-xs-6', local: true do |form| %>
-        <p>
-          <%= form.label :title %><br>
-          <%= form.text_field :title, class: 'col-xs-12' %>
-        </p>
-
-        <p>
-          <%= form.label :text %><br>
-          <%= form.text_area :text, class: 'col-xs-12', style: 'height: 200px'%>
-        </p>
-
-        <p>
-          <%= form.label :image %><br>
-          <%= form.file_field :image, class: 'col-xs-12'%>
-        </p>
-
-        <p>
-          <%= form.submit %>
-        </p>
-
-      <% end %>
-
-    </div>
-    <div class="row center">
-      <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
+<%= controller.redirect_to root_path %>
+<% else %>
+<div class="col-md-9 col-lg-9 right_col">
+  <!-- Row with title -->
+  <div class="row page-title">
+    <div class="title_left">
+      <div class="x_panel">
+        <h2 style="margin: 9px 0">Create note</h2> 
+      </div>                
     </div>
   </div>
-</body>
+  <!-- /Row with title -->
+  <% if @note.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h2>
+      <%= pluralize(@note.errors.count, "error") %> prohibited
+      this note from being saved:
+    </h2>
+    <ul>
+      <% @note.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="row center">
+    <%= form_with scope: :note, model: [ :user, @note ], class: 'col-xs-6', local: true do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class: 'col-xs-12' %>
+    </p>
+
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text, class: 'col-xs-12', style: 'height: 200px'%>
+    </p>
+
+    <p>
+      <%= form.label :image %><br>
+      <%= form.file_field :image, class: 'col-xs-12'%>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+
+    <% end %>
+
+  </div>
+  <div class="row center">
+    <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
+  </div>
+</div>
+<% end %>

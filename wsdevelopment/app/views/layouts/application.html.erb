@@ -4,12 +4,33 @@
     <title>Wsdevelopment</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Javascript-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" %>
+    <!-- Stylesheet-->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" %>
+    
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="body nav-md ">
+    <% if !logged? %>
+      <%= yield %>
+    <% else %>
+      <header>
+        <div class="top_nav">
+          <%= render 'layouts/nav' %>  
+        </div>
+      </header>
+      <main id="main" role="main">
+        <div class="col-md-3 left_col">
+          <%= render 'layouts/sidebar' %>
+        </div>
+
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>

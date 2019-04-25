@@ -1,37 +1,41 @@
 <% if !logged? %>
-  <%= controller.redirect_to root_path %>
+<%= controller.redirect_to root_path %>
+<% else %>
+  <div class="col-md-9 col-lg-9 right_col">
+        <div class="page-content inset">
+         <!-- Row with title -->
+         <div class="row page-title">
+          <div class="title_left">
+            <div class="x_panel">
+              <h2 style="margin: 9px 0">Note_name </h2> 
+            </div>                
+          </div>
+        </div>
+        <!-- /Row with title -->
+        <div class="row center">
+          <%= form_with(model: [ :user, @note ], class: 'col-xs-6', local: true) do |form| %>
+          <p>
+            <%= form.label :title %><br>
+            <%= form.text_field :title, class: 'col-xs-12', :disabled => true %>
+          </p>
+
+          <p>
+            <%= form.label :text %><br>
+            <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
+          </p>
+
+          <p>
+            <%= form.label :image %><br>
+            <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center') if @note.image? %>
+          </p>
+
+          <% end %>
+
+        </div>
+        <div class="row center col-xs-12">
+          <%= link_to 'Edit', edit_user_note_url, class: 'btn btn-default with-margin' %>
+          <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
+        </div>
+      </div>
+</div>
 <% end %>
-<body>
-  <header class="container-fluid">
-    <div class="center">
-      <h1>Show note</h1>
-      <%= link_to 'Log Out', '/logout' , class: 'btn btn-primary btn-lg logout' %>
-    </div>
-  </header>
-  <div id="main-content" class="container">
-    <div class="row center">
-      <%= form_with(model: [ :user, @note ], class: 'col-xs-6', local: true) do |form| %>
-        <p>
-          <%= form.label :title %><br>
-          <%= form.text_field :title, class: 'col-xs-12', :disabled => true %>
-        </p>
-
-        <p>
-          <%= form.label :text %><br>
-          <%= form.text_area :text, class: 'col-xs-12', :disabled => true, style: 'height: 200px'%>
-        </p>
-
-        <p>
-          <%= form.label :image %><br>
-          <%= image_tag(@note.image.url, alt: 'Image', class: 'col-xs-12 center') if @note.image? %>
-        </p>
-
-      <% end %>
-
-    </div>
-    <div class="row center col-xs-12">
-      <%= link_to 'Edit', edit_user_note_url, class: 'btn btn-default with-margin' %>
-      <%= link_to 'Back', user_notes_url(params[:user_id]), class: 'btn btn-info' %>
-    </div>
-  </div>
-</body>
