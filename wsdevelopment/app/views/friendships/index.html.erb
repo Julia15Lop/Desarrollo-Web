@@ -14,18 +14,93 @@
       <div class="row">
         <% @friendship.each do |friendship| %>
           <% if friendship.status == 'confirmed' %>
-          <% user = find_users(friendship.friend_id) %>
-        <div class="note col-xs-12 col-sm-6 col-md-3">
-          <div class="note-title col-xs-12">
-            <%= user.user_name%>
-          </div>
-          <div class="note-text col-xs-12">
-            <%= user.email %>
-          </div>
-        </div>
+            <% user = find_users(friendship.friend_id) %>
+              <!-- User info-->
+              <div class="note col-xs-12 col-sm-6 col-md-3">
+                <!-- User icon-->
+                <div class="col-lg-2 col-md-2 col-xs-12">
+                  <div class="row" align="center">
+                    <i class="fa fa-user" style="font-size: 50px"></i>
+                  </div>
+                </div>
+                <!-- /User icon-->
+                <!-- User name-->
+                <div class="col-lg-8 col-md-8">
+                  <div class="note-title col-xs-12"> 
+                    <%= user.user_name%>
+                  </div>
+                  <div class="note-text col-xs-12">
+                    <%= user.email %>
+                  </div>
+                </div>
+                <!-- /User name-->
+                <!-- Delete button -->
+                <div class="col-md-2 col-lg-2">
+                  <div class="row center">
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger',
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+                  </div>
+                </div>
+                <!-- /Delete button -->
+              </div>
+              <!-- User info-->
           <% end%>
         <% end %>
       </div>
+      <!-- Add new friends -->
+      <div class="row page-title">
+        <div class="title_left">
+          <div class="x_panel">
+            <h4 style="margin: 9px 0">Add new friends </h4> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% @user = User.all %>
+        <% @user.each do |user| %>
+          
+        <div class="note col-xs-12 col-sm-6 col-md-3">
+          <!-- User icon-->
+          <div class="col-md-3" align="center">
+            <div class="row" align="center">
+              <span><i class="fa fa-user" style="font-size: 50px"></i></span>
+            </div>
+          </div>
+          <!-- /User icon-->    
+          <!-- User info-->      
+          <div class="col-md-9">
+            <div class="note-title col-xs-12"> 
+              <%= user.user_name %>
+            </div>
+            <div class="note-text col-xs-12">
+              <%= user.email %>
+            </div>
+          </div>
+          <!-- /User info-->    
+          <!-- Add button user -->
+          <div class="row note-actions ">
+            <div class="col-xs-12" align="right">
+              <% user_id = user_id(session[:user_name])%>
+              <% friend_id = user.id%>
+              <% status = "pending" %>
+              <%= link_to '<i class="fa fa-user-plus"></i>'.html_safe, user_friendships_path(:user_id => user_id, :friend_id => friend_id, :status => status), :method => :post ,class: 'btn btn-default' %>  
+            </div>
+          </div>
+          <!-- /Add button user -->
+        </div>
+        <% end %>  
+      </div>
+      <!-- Pending requests -->
+      <div class="row page-title">
+        <div class="title_left">
+          <div class="x_panel">
+            <h4 style="margin: 9px 0">Your pending requests </h4> 
+          </div>
+        </div>
+      </div>
+
+      <!-- /Pending requests -->
     </div>
   </div>
 <% end %>

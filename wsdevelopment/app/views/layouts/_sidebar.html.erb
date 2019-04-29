@@ -19,14 +19,14 @@
       <ul class="nav side-menu" id="nav-menu">
       	<% if user_session_is_admin? %>
 	        <!-- User admin view -->
-	        <li ><%= link_to '<i class="fa fa-users"></i> Users list'.html_safe, users_path %>
-	        </li>
+	        <li ><%= link_to '<i class="fa fa-sticky-note"></i> Notes list'.html_safe, user_notes_url(userId) %></li>
+          <li ><%= link_to '<i class="fa fa-id-card-o"></i> Admin management'.html_safe, users_path %></li>
 	        <!-- /User admin view -->
 	    <% else %>
 	    	<li ><%= link_to '<i class="fa fa-sticky-note"></i> Notes list'.html_safe, user_notes_url(userId) %></li>
 	    <% end %>
         <!-- Friends view -->
-        <li><%= link_to '<i class="fa fa-users"></i> Friends list'.html_safe, user_friendships_path(userId) %>
+        <li><%= link_to '<i class="fa fa-address-book"></i> Friends list'.html_safe, user_friendships_path(userId) %>
         </li>
         <!-- /Friends view -->  
         <!-- Edit view -->
