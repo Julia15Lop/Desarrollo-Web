@@ -25,6 +25,10 @@
 	    <% else %>
 	    	<li ><%= link_to '<i class="fa fa-sticky-note"></i> Notes list'.html_safe, user_notes_url(userId) %></li>
 	    <% end %>
+        <!-- Friends view -->
+        <li><%= link_to '<i class="fa fa-users"></i> Friends list'.html_safe, user_friendships_path(userId) %>
+        </li>
+        <!-- /Friends view -->  
         <!-- Edit view -->
         <li><%= link_to '<i class="fa fa-pencil"></i> Edit profile'.html_safe, edit_user_path(userId)  %>
         </li>

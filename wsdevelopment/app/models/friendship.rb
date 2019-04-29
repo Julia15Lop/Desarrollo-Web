@@ -1,5 +1,6 @@
 class Friendship < ApplicationRecord
-	has_and_belongs_to_many :user
+	belongs_to :user
+	belongs_to :friend, :class_name => 'User'
 	
 	STATUSES = [ "pending", "confirmed", "denied" ].freeze
 	

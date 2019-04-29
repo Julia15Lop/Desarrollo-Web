@@ -32,6 +32,16 @@
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
             </div>
+            <% if user_session_is_admin? %>
+            
+            <div class="col-xs-4 center">
+              <% user_id = user_id(session[:user_name])%>
+              <% friend_id = user.id%>
+              <% status = "pending" %>
+              <%= link_to '<i class="fa fa-user-plus"></i>'.html_safe, user_friendships_path(:user_id => user_id, :friend_id => friend_id, :status => status), :method => :post ,class: 'btn btn-default' %>
+              
+            </div>
+            <% end %>
           </div>
         </div>
         <% end %>
