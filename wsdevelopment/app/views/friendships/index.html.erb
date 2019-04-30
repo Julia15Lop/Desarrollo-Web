@@ -6,6 +6,53 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
+
+    <!-- Pending requests -->
+    <div class="row page-title">
+      <div class="title_left">
+        <div class="x_panel">
+          <h4 style="margin: 9px 0">Your pending requests </h4> 
+        </div>
+      </div>
+    </div>
+    <!-- /Pending requests -->
+    <div class="row">
+      <% user_id = user_id(session[:user_name]) %>
+      <% get_friendships(user_id, 'pending').each do |friendship| %>
+        <% user = find_user(friendship.friend_id) %>
+        <!-- User info-->
+        <div class="note col-xs-12 col-sm-6 col-md-4">
+          <!-- User icon-->
+          <div class="col-lg-2 col-md-2 col-xs-12">
+            <div class="row" align="center">
+              <i class="fa fa-user" style="font-size: 50px"></i>
+            </div>
+          </div>
+          <!-- /User icon-->
+          <!-- User name-->
+          <div class="col-lg-8 col-md-8">
+            <div class="note-title col-xs-12"> 
+              <%= user.user_name%>
+            </div>
+            <div class="note-text col-xs-12">
+              <%= user.email %>
+            </div>
+          </div>
+          <!-- /User name-->
+          <!-- Delete button -->
+          <div class="col-md-2 col-lg-2">
+            <div class="row center">
+              <%= link_to '<i class="">Accept</i>'.html_safe, edit_user_friendship_path(:id => friendship.id, :status => "confirmed"), class: 'btn btn-success' %>
+            </div>
+            <div class="row">
+              <%= link_to '<i class="">Denied</i>'.html_safe, class: 'btn btn-danger' %>
+            </div>
+          </div>
+          <!-- /Delete button -->
+      </div>
+      <!-- User info-->
+      <% end%>
+    </div>
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
       <div class="row page-title">
@@ -16,9 +63,8 @@
         </div>
       </div>
       <div class="row">
-        <% @friendship.each do |friendship| %>
-          <% if friendship.status == 'confirmed' %>
-            <% user = find_users(friendship.friend_id) %>
+        <% get_friendships(user_id, 'confirmed').each do |friendship|  %>
+           <% user = find_user(friendship.friend_id) %>
               <!-- User info-->
               <div class="note col-xs-12 col-sm-6 col-md-3">
                 <!-- User icon-->
@@ -49,7 +95,6 @@
                 <!-- /Delete button -->
               </div>
               <!-- User info-->
-          <% end%>
         <% end %>
       </div>
       <!-- Add new friends -->
@@ -95,16 +140,6 @@
         </div>
         <% end %>  
       </div>
-      <!-- Pending requests -->
-      <div class="row page-title">
-        <div class="title_left">
-          <div class="x_panel">
-            <h4 style="margin: 9px 0">Your pending requests </h4> 
-          </div>
-        </div>
-      </div>
-
-      <!-- /Pending requests -->
     </div>
   </div>
 <% end %>

@@ -6,9 +6,7 @@ module UsersHelper
     admin
   end
 
-  def find_users(user_id)
-  	User.where(id: user_id).first
-  end
+  
 
   def logged?
     session[:user_name]

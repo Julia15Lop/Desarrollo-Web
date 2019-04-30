@@ -7,6 +7,10 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new
   end 
 
+  def edit
+    @friendship = Friendship.find(params[:id])
+  end 
+
   def create
     @user = User.find(params[:user_id])
     @friendship = @user.friendships.create(:friend_id => params[:friend_id], :status => params[:status])
@@ -17,6 +21,16 @@ class FriendshipsController < ApplicationController
     else
       flash[:notice] = "You can't add this user"
       redirect_to user_friendships_url
+    end
+  end
+
+  def update
+    if logged?
+      @friendship = Friendship.find(params[:id])
+
+      if @friendship.update(:status => params[:status])
+        redirect_to user_friendships_url
+      end
     end
   end
 
