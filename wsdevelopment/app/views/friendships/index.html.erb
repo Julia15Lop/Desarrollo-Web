@@ -1,7 +1,11 @@
 <% if !logged? %>
   <%= controller.redirect_to root_path %>
 <% else %>
+
   <div  class="col-md-9 col-lg-9 right_col">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
       <div class="row page-title">
