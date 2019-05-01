@@ -7,10 +7,6 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new
   end 
 
-  def edit
-    @friendship = Friendship.find(params[:id])
-  end 
-
   def create
     @user = User.find(params[:user_id])
     @friendship = @user.friendships.create(:friend_id => params[:friend_id], :status => params[:status])
@@ -25,10 +21,13 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    if logged?
+    if session[:user_name]
       @friendship = Friendship.find(params[:id])
 
       if @friendship.update(:status => params[:status])
+        redirect_to user_friendships_url
+      else
+        flash[:notice] = "The request has not been update"
         redirect_to user_friendships_url
       end
     end

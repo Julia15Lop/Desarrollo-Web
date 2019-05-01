@@ -7,4 +7,8 @@ module FriendshipsHelper
 	def find_user(user_id)
   		User.where(id: user_id).first
   	end
+
+  	def logged?
+  		session[:user_name]
+  	end
 end

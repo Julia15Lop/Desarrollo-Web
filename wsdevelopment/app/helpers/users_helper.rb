@@ -6,8 +6,6 @@ module UsersHelper
     admin
   end
 
-  
-
   def logged?
     session[:user_name]
   end
