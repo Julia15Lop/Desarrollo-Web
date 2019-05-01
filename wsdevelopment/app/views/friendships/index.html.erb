@@ -87,9 +87,7 @@
                 <!-- Delete button -->
                 <div class="col-md-2 col-lg-2">
                   <div class="row center">
-                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger',
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger'%>
                   </div>
                 </div>
                 <!-- /Delete button -->
