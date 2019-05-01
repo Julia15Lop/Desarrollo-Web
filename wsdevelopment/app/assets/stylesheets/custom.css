@@ -158,7 +158,11 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
     border-right: 5px solid #d7e6f4;
 }
-
+/* User icon style */
+.user-icon {
+    font-size: 50px; 
+    padding-top: 2rem
+}
 
 
 .navbar-header {

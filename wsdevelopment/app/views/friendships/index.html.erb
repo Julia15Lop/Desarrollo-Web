@@ -21,16 +21,16 @@
       <% get_friendships(user_id, 'pending').each do |friendship| %>
         <% user = find_user(friendship.friend_id) %>
         <!-- User info-->
-        <div class="note col-xs-12 col-sm-6 col-md-4">
+        <div class="note col-xs-12 col-sm-4 col-md-4">
           <!-- User icon-->
           <div class="col-lg-2 col-md-2 col-xs-12">
             <div class="row" align="center">
-              <i class="fa fa-user" style="font-size: 50px"></i>
+              <i class="fa fa-user user-icon" ></i>
             </div>
           </div>
           <!-- /User icon-->
           <!-- User name-->
-          <div class="col-lg-8 col-md-8">
+          <div class="col-lg-7 col-md-7">
             <div class="note-title col-xs-12"> 
               <%= user.user_name%>
             </div>
@@ -40,12 +40,10 @@
           </div>
           <!-- /User name-->
           <!-- Delete button -->
-          <div class="col-md-2 col-lg-2">
+          <div class="col-md-3 col-lg-3" style="padding-top: 2rem">
             <div class="row center">
-              <%= link_to '<i class="fa fa-check">Accept</i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'confirmed'), :method => :put, class: 'btn btn-success' %>
-            </div>
-            <div class="row">
-              <%= link_to '<i class="fa fa-close">Denied</i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger' %>
+              <%= link_to '<i class="fa fa-check"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'confirmed'), :method => :put, class: 'btn btn-success' %>
+              <%= link_to '<i class="fa fa-close"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger' %>
             </div>
           </div>
           <!-- /Delete button -->
@@ -58,7 +56,7 @@
       <div class="row page-title">
         <div class="title_left">
           <div class="x_panel">
-            <h2 style="margin: 9px 0">Friends </h2> 
+            <h4 style="margin: 9px 0">Friends </h4> 
           </div>
         </div>
       </div>
@@ -70,7 +68,7 @@
                 <!-- User icon-->
                 <div class="col-lg-2 col-md-2 col-xs-12">
                   <div class="row" align="center">
-                    <i class="fa fa-user" style="font-size: 50px"></i>
+                    <i class="fa fa-user user-icon" ></i>
                   </div>
                 </div>
                 <!-- /User icon-->
@@ -86,7 +84,7 @@
                 <!-- /User name-->
                 <!-- Delete button -->
                 <div class="col-md-2 col-lg-2">
-                  <div class="row center">
+                  <div class="row center" style="padding-top: 2rem">
                     <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger'%>
                   </div>
                 </div>
@@ -106,36 +104,32 @@
       <div class="row">
         <% @user = User.all %>
         <% @user.each do |user| %>
-          
-        <div class="note col-xs-12 col-sm-6 col-md-3">
-          <!-- User icon-->
-          <div class="col-md-3" align="center">
-            <div class="row" align="center">
-              <span><i class="fa fa-user" style="font-size: 50px"></i></span>
+          <div class="note col-xs-12 col-sm-4 col-md-4">
+            <!-- User icon-->
+            <div class="col-md-2 col-lg-2" align="center">
+              <div class="row" align="center">
+                <span><i class="fa fa-user user-icon" ></i></span>
+              </div>
             </div>
+            <!-- /User icon-->    
+            <!-- User info-->      
+            <div class="col-md-7 col-lg-7">
+              <div class="note-title col-xs-12"> 
+                <%= user.user_name %>
+              </div>
+              <div class="note-text col-xs-12">
+                <%= user.email %>
+              </div>
+            </div>
+            <!-- /User info-->
+            <!-- Add button user -->
+            <div class="col-lg-3 col-md-3 col-xs-12" style="padding-top: 2rem">
+                <% user_id = user_id(session[:user_name])%>
+                <% status = "pending" %>
+                <%= link_to '<i class="fa fa-user-plus"></i>'.html_safe, user_friendships_path(:user_id => user_id, :friend_id => user.id, :status => status), :method => :post ,class: 'btn btn-default' %>  
+            </div>    
+            <!-- /Add button user -->
           </div>
-          <!-- /User icon-->    
-          <!-- User info-->      
-          <div class="col-md-9">
-            <div class="note-title col-xs-12"> 
-              <%= user.user_name %>
-            </div>
-            <div class="note-text col-xs-12">
-              <%= user.email %>
-            </div>
-          </div>
-          <!-- /User info-->    
-          <!-- Add button user -->
-          <div class="row note-actions ">
-            <div class="col-xs-12" align="right">
-              <% user_id = user_id(session[:user_name])%>
-              <% friend_id = user.id%>
-              <% status = "pending" %>
-              <%= link_to '<i class="fa fa-user-plus"></i>'.html_safe, user_friendships_path(:user_id => user_id, :friend_id => friend_id, :status => status), :method => :post ,class: 'btn btn-default' %>  
-            </div>
-          </div>
-          <!-- /Add button user -->
-        </div>
         <% end %>  
       </div>
     </div>
