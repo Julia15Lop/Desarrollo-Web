@@ -45,7 +45,7 @@
               <%= link_to '<i class="fa fa-check">Accept</i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'confirmed'), :method => :put, class: 'btn btn-success' %>
             </div>
             <div class="row">
-              <%= link_to '<i class="fa fa-close">Denied</i>'.html_safe, class: 'btn btn-danger' %>
+              <%= link_to '<i class="fa fa-close">Denied</i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger' %>
             </div>
           </div>
           <!-- /Delete button -->
