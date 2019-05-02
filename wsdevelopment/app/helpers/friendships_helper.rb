@@ -27,7 +27,5 @@ module FriendshipsHelper
   		User.find(id)
   	end
 
-  	def logged?
-  		session[:user_name]
-  	end
+  	
 end

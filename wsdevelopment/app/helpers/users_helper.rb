@@ -6,6 +6,10 @@ module UsersHelper
     admin
   end
 
+  def get_user_name(user_id)
+  	user = User.where(id: user_id).first
+  end
+
   def logged?
     session[:user_name]
   end
