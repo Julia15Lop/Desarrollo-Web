@@ -5,7 +5,7 @@ class Friendship < ApplicationRecord
 	validates :friend, uniqueness: { scope: :user } 
 	validate :autofriendship
 
-	STATUSES = [ "pending", "confirmed", "denied" ].freeze
+	STATUSES = [ "pending", "confirmed"].freeze
 	
 
 	private

@@ -43,7 +43,7 @@
           <div class="col-md-3 col-lg-3" style="padding-top: 2rem">
             <div class="row center">
               <%= link_to '<i class="fa fa-check"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'confirmed'), :method => :put, class: 'btn btn-success' %>
-              <%= link_to '<i class="fa fa-close"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger' %>
+              <%= link_to '<i class="fa fa-close"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id), :method => :delete, class: 'btn btn-danger' %>
             </div>
           </div>
           <!-- /Delete button -->
@@ -85,7 +85,7 @@
                 <!-- Delete button -->
                 <div class="col-md-2 col-lg-2">
                   <div class="row center" style="padding-top: 2rem">
-                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id, :status => 'denied'), :method => :put, class: 'btn btn-danger'%>
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_friendship_path(:user_id => friendship.user_id, :id => friendship.id), :method => :delete, class: 'btn btn-danger'%>
                   </div>
                 </div>
                 <!-- /Delete button -->

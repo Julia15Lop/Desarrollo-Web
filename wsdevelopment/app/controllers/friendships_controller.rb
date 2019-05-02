@@ -33,6 +33,16 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def destroy
+    if session[:user_name]
+      @friendship = Friendship.find(params[:id])
+
+      if @friendship.destroy
+        redirect_to user_friendships_url
+      end
+    end
+  end
+
   private
 
   def friendship_params
