@@ -19,7 +19,7 @@
     <div class="row">
       <% user_id = user_id(session[:user_name]) %>
       <% get_friendships(user_id, 'pending').each do |friendship| %>
-        <% user = find_user(friendship.friend_id) %>
+        <% user = find_user(friendship.user_id, friendship) %>
         <!-- User info-->
         <div class="note col-xs-12 col-sm-4 col-md-4">
           <!-- User icon-->
@@ -62,7 +62,7 @@
       </div>
       <div class="row">
         <% get_friendships(user_id, 'confirmed').each do |friendship|  %>
-           <% user = find_user(friendship.friend_id) %>
+           <% user = find_user(session[:user_name], friendship) %>
               <!-- User info-->
               <div class="note col-xs-12 col-sm-6 col-md-3">
                 <!-- User icon-->
@@ -102,8 +102,7 @@
         </div>
       </div>
       <div class="row">
-        <% @user = User.all %>
-        <% @user.each do |user| %>
+        <%  get_new_friendships(user_id).each do |user| %>
           <div class="note col-xs-12 col-sm-4 col-md-4">
             <!-- User icon-->
             <div class="col-md-2 col-lg-2" align="center">
