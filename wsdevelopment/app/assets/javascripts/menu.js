@@ -34,7 +34,7 @@ $(document).ready(function() {
 		if($(this).hasClass('selected_menu')){
 			$(this).removeClass('selected_menu');
 		} else {
-			alert('no lo tiene');
+
 			$(this).addClass('selected_menu');
 			//$(this).addClass('selected_menu');
 		}

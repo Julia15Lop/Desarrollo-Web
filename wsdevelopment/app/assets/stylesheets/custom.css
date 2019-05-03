@@ -20,7 +20,7 @@ form:after {
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 25px;
     margin-right: 10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
@@ -80,10 +80,11 @@ form:after {
     line-height: 1.471;
 }
 .col-md-3.left_col {
-    min-height: 100%;
+    position: fixed;
+    height: 100%;
     width: 230px;
     padding: 0;
-    position: absolute;
+    
     display: -ms-flexbox;
     display: flex;
     z-index: 1
@@ -157,7 +158,11 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
     border-right: 5px solid #d7e6f4;
 }
-
+/* User icon style */
+.user-icon {
+    font-size: 50px; 
+    padding-top: 2rem
+}
 
 
 .navbar-header {
