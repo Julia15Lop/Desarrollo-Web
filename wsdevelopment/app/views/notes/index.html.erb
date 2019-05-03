@@ -43,11 +43,10 @@
                 </div>
               </div>
               <div class="row" style="padding-left:25px; padding-right: 25px ">
+                <div class="col-xs-4 center">
+                  <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
+                </div>
                 <% if user_id == params[:user_id].to_i %>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
-                  </div>
-                  
                     <div class="col-xs-4 center">
                       <%= link_to 'Edit', { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
                     </div>
