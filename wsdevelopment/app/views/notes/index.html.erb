@@ -33,29 +33,30 @@
                     </div>
                   </div>
                 <% end %>  
-                <div class="note-title col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding-left: 20px">
+                <div class="note-title col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding-left: 30px">
                   <%= note.title %>
                 </div>
               </div>
-              <div class="row" style="height: 30%">                
+              <div class="row" style="height: 40%">                
                 <div class="note-text col-xs-12 col-lg-12 col-md-12">
                   <%= note.text %>
                 </div>
               </div>
               <div class="row" style="padding-left:25px; padding-right: 25px ">
-                
+                <% if user_id == params[:user_id].to_i %>
                   <div class="col-xs-4 center">
                     <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
                   </div>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Edit', { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
-                  </div>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Delete', { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-                  </div>
-                
+                  
+                    <div class="col-xs-4 center">
+                      <%= link_to 'Edit', { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
+                    </div>
+                    <div class="col-xs-4 center">
+                      <%= link_to 'Delete', { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+                    </div>
+                  <% end %>
               </div>
             </div>
 
