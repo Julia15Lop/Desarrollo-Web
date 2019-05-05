@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_103914) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2019_05_05_002043) do
 
   create_table "collections", force: :cascade do |t|
     t.string "name"
@@ -29,6 +30,9 @@ ActiveRecord::Schema.define(version: 2019_05_05_103914) do
     t.index ["collection_id"], name: "index_collections_notes_on_collection_id"
     t.index ["note_id"], name: "index_collections_notes_on_note_id"
   end
+=======
+ActiveRecord::Schema.define(version: 2019_05_05_103914) do
+>>>>>>> master
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"

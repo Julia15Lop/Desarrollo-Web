@@ -1,0 +1,14 @@
+class Note < ApplicationRecord
+
+  belongs_to :user
+<<<<<<< HEAD
+  has_many :collections_notes, through: :collections_notes
+=======
+  has_one :note_permission, dependent: :destroy
+>>>>>>> master
+
+  validates :title, presence: true, length: {maximum: 10}
+  validates :text, presence: true
+
+mount_uploader :image, ImageUploader
+end
