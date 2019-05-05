@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_171202) do
+ActiveRecord::Schema.define(version: 2019_05_05_103914) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2019_04_25_171202) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "note_permissions", force: :cascade do |t|
+    t.integer "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "note_permissions_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "note_permission_id"
+    t.index ["user_id", "note_permission_id"], name: "user_index"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -27,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_171202) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "image"
+    t.integer "note_permission_id"
+    t.index ["note_permission_id"], name: "index_notes_on_note_permission_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 

@@ -1,0 +1,137 @@
+<% if !logged? %>
+  <%= controller.redirect_to root_path %>
+<% else %>
+
+  <div  class="col-md-9 col-lg-9 right_col">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
+    <% user_id = user_id(session[:user_name]) %>
+    <!-- Keep all page content within the page-content inset div! -->
+
+    <!-- creator user -->
+    <div class="page-content inset">
+      <div class="row page-title">
+        <div class="title_left">
+          <div class="x_panel">
+            <h4 style="margin: 9px 0">Note creator</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% user = @note.user %>
+        <!-- User info-->
+        <div class="note col-xs-12 col-sm-6 col-md-3">
+          <!-- User icon-->
+          <div class="col-lg-2 col-md-2 col-xs-12">
+            <div class="row" align="center">
+              <i class="fa fa-user user-icon" ></i>
+            </div>
+          </div>
+          <!-- /User icon-->
+          <!-- User name-->
+          <div class="col-lg-8 col-md-8">
+            <div class="note-title col-xs-12">
+              <%= user.user_name%>
+            </div>
+            <div class="note-text col-xs-12">
+              <%= user.email %>
+            </div>
+          </div>
+          <!-- /User name-->
+        </div>
+        <!-- User info-->
+      </div>
+    </div>
+
+    <!-- Allow to edit users -->
+    <div class="page-content inset">
+      <div class="row page-title">
+        <div class="title_left">
+          <div class="x_panel">
+            <h4 style="margin: 9px 0">Allow to edit </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% get_users_to_edit(@note.id).each do |user|  %>
+          <!-- User info-->
+          <div class="note col-xs-12 col-sm-6 col-md-3">
+            <!-- User icon-->
+            <div class="col-lg-2 col-md-2 col-xs-12">
+              <div class="row" align="center">
+                <i class="fa fa-user user-icon" ></i>
+              </div>
+            </div>
+            <!-- /User icon-->
+            <!-- User name-->
+            <div class="col-lg-8 col-md-8">
+              <div class="note-title col-xs-12">
+                <%= user.user_name%>
+              </div>
+              <div class="note-text col-xs-12">
+                <%= user.email %>
+              </div>
+            </div>
+            <!-- /User name-->
+            <!-- Delete button -->
+            <div class="col-md-2 col-lg-2">
+              <div class="row center" style="padding-top: 2rem">
+                <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_note_unshare_with_friend_path({id: user_id, friend_id: user.id}), :method => :post, class: 'btn btn-danger'%>
+              </div>
+            </div>
+            <!-- /Delete button -->
+          </div>
+          <!-- User info-->
+        <% end %>
+      </div>
+    </div>
+
+
+    <!-- Add new user to share -->
+    <div class="page-content inset">
+      <div class="row page-title">
+        <div class="title_left">
+          <div class="x_panel">
+            <h4 style="margin: 9px 0">Not allow to edit </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% get_users_cant_edit(@note.id).each do |user|  %>
+          <!-- User info-->
+          <div class="note col-xs-12 col-sm-6 col-md-3">
+            <!-- User icon-->
+            <div class="col-lg-2 col-md-2 col-xs-12">
+              <div class="row" align="center">
+                <i class="fa fa-user user-icon" ></i>
+              </div>
+            </div>
+            <!-- /User icon-->
+            <!-- User name-->
+            <div class="col-lg-8 col-md-8">
+              <div class="note-title col-xs-12">
+                <%= user.user_name%>
+              </div>
+              <div class="note-text col-xs-12">
+                <%= user.email %>
+              </div>
+            </div>
+            <!-- /User name-->
+            <!-- Delete button -->
+            <div class="col-md-2 col-lg-2">
+              <div class="row center" style="padding-top: 2rem">
+                <%= link_to '<i class="fa fa-plus"></i>'.html_safe, user_note_share_with_friend_path({id: user_id, friend_id: user.id}), :method => :post, class: 'btn btn-default'%>
+              </div>
+            </div>
+            <!-- /Delete button -->
+          </div>
+          <!-- User info-->
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
+<% end %>
