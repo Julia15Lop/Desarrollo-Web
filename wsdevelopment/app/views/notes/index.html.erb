@@ -2,24 +2,27 @@
   <%= controller.redirect_to root_path %>
 <% else %>
   <div class="col-md-9 col-lg-9 right_col">
-    <% notes = find_notes(params[:user_id]) %>
+    <% notes = find_notes(params[:user_id]) %>    
     <% notes.each_pair do |user_id, user_notes| %>
       <!-- Row with title -->
       <div class="row page-title">
         <div class="title_left">
-          <div class="x_panel">
+          <div class="x_panel panel-style">
             <% if user_id == params[:user_id].to_i %>
-              <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i> Your notes</h3> 
+              <% user = get_user_name(user_id) %>  
+              <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i> 
+                <%= user.user_name %> Notes
+              </h3> 
             <% else %>
               <% user = get_user_name(user_id) %>
               <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i>
                 <%= user.user_name %> Notes
-              </h3>
+              </h3> 
             <% end %>
           </div>
         </div>
       </div>
-      <!-- / Row with title -->
+      <!-- / Row with title --> 
         <div class="row" style="padding-left: 60px">
           <% user_notes.each do |note| %>
             <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 200px">
@@ -43,22 +46,21 @@
                 </div>
               </div>
               <div class="row" style="padding-left:25px; padding-right: 25px ">
-                <% if user_id == params[:user_id].to_i %>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
-                  </div>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Edit', { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
-                  </div>
-                  <div class="col-xs-4 center">
-                    <%= link_to 'Delete', { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
+                <div class="col-xs-3 center">
+                  <%= link_to '<i class="fa fa-eye"></i>'.html_safe, { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
+                </div>
+                <% if note.note_permission&.user_ids&.include?(user_id) %>
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
+                    </div>
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-share"></i>'.html_safe, user_note_share_path({note_id: note.id}), class: 'btn btn-default', method: :get %>
+                    </div>
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-trash"></i>'.html_safe, { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
                       method: :delete,
                       data: { confirm: 'Are you sure?' } %>
-                  </div>
-                <% else %>
-                  <div class="col-xs-12 center">
-                    <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
-                  </div>
+                    </div>
                 <% end %>
               </div>
             </div>

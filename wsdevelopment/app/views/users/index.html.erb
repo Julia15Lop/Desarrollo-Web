@@ -6,14 +6,14 @@
     <div class="page-content inset">
       <div class="row page-title">
         <div class="title_left">
-          <div class="x_panel">
+          <div class="x_panel panel-style" >
             <h2 style="margin: 9px 0"><i class="fa fa-cogs"></i> Admin Management</h2> 
           </div>
         </div>
       </div>
       <div class="row">
         <% @user.each do |user| %>
-        <div class="note col-xs-12 col-sm-6 col-md-3">
+        <div class="note col-xs-12 col-sm-6 col-md-3 card-style">
           <div class="note-title col-xs-12">
             <%= user.user_name %>
           </div>

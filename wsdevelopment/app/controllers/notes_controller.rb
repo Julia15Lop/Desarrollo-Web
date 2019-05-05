@@ -9,6 +9,7 @@ class NotesController < ApplicationController
   def new
     @note=Note.new
   end
+
   def edit
     @note = Note.find(params[:id])
   end
@@ -25,18 +26,38 @@ class NotesController < ApplicationController
     end
   end
 
-
   def create
     if logged?
       @user = User.find(params[:user_id])
       @note = @user.notes.create(note_params)
 
       if @note.save
+        np = NotePermission.create({note: @note})
+        np.user << @user
         redirect_to user_notes_url(@user)
       else
         render 'new'
       end
     end
+  end
+
+  def share
+    @note = Note.find(params["note_id"])
+    @note_permission = @note.note_permission
+  end
+
+  def share_with_friend
+    note = Note.find(params["note_id"])
+    note_permission = note.note_permission
+    note_permission.user << User.find(params[:friend_id])
+    redirect_to user_note_share_url(note)
+  end
+
+  def unshare_with_friend
+    note = Note.find(params["note_id"])
+    note_permission = note.note_permission
+    note_permission.user.delete(User.find(params[:friend_id]))
+    redirect_to user_note_share_url(note)
   end
 
   def destroy

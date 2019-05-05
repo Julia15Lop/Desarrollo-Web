@@ -21,9 +21,13 @@ module FriendshipsHelper
 	def get_all_users_except(id)
 		User.where.not(id: id)
 	end
-	def find_user(user_name, friendship)
-		user = User.where(user_name: user_name).first
-		friendship.user_id == user.id ? id = friendship.friend_id : id = friendship.user_id
+	def find_user(user_id, friendship)
+		user = User.where(id: user_id).first
+		if friendship.user_id.eql? user.id 
+			id = friendship.friend_id
+		else
+			id = friendship.user_id
+		end
   		User.find(id)
   	end
 

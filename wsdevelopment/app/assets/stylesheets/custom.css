@@ -163,6 +163,15 @@ hr {
     font-size: 50px; 
     padding-top: 2rem
 }
+/* User card color */
+.card-style{
+    background-color: #d7e6f4;
+
+}
+.panel-style{
+    border-style: solid; 
+    border-color: #5a738e 
+}
 
 
 .navbar-header {
