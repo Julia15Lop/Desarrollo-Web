@@ -7,9 +7,12 @@
       <!-- Row with title -->
       <div class="row page-title">
         <div class="title_left">
-          <div class="x_panel">
+          <div class="x_panel panel-style">
             <% if user_id == params[:user_id].to_i %>
-              <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i> Your notes</h3> 
+              <% user = get_user_name(user_id) %>  
+              <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i> 
+                <%= user.user_name %> Notes
+              </h3> 
             <% else %>
               <% user = get_user_name(user_id) %>
               <h3 style="margin: 9px 0"><i class="fa fa-sticky-note"></i>

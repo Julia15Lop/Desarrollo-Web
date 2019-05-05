@@ -10,7 +10,7 @@
     <!-- Pending requests -->
     <div class="row page-title">
       <div class="title_left">
-        <div class="x_panel">
+        <div class="x_panel panel-style">
           <h4 style="margin: 9px 0"><strong>Pending requests </strong></h4> 
         </div>
       </div>
@@ -23,7 +23,7 @@
         <% friendships.each do |friendship| %>
           <% user = find_user(user_id, friendship) %>
           <!-- User info-->
-          <div class="note col-xs-12 col-sm-4 col-md-4">
+          <div class="note col-xs-12 col-sm-4 col-md-4 card-style">
             <!-- User icon-->
             <div class="col-lg-2 col-md-2 col-xs-12">
               <div class="row" align="center">
@@ -54,7 +54,7 @@
         <% end %>
       <% else %>
         <!-- User info-->
-          <div class="note col-xs-12 col-sm-4 col-md-4" style="background-color: #ccffcc">
+          <div class="note col-xs-12 col-sm-4 col-md-4" style="background-color: white">
             <!-- User name-->
             <div class="row">
               <div class="col-xs-12" style="height: 50px; justify-content: center; display: flex; padding-top: 10px"> 
@@ -71,18 +71,18 @@
     <div class="page-content inset">
       <div class="row page-title">
         <div class="title_left">
-          <div class="x_panel">
+          <div class="x_panel panel-style">
             <h4 style="margin: 9px 0"><strong>Your Friends </strong></h4> 
           </div>
         </div>
       </div>
       <div class="row">
-        <% friendships = get_friendships(user_id, 'pending') %>
+        <% friendships = get_friendships(user_id, 'confirmed') %>
           <% if !friendships.empty? %>
             <% friendships.each do |friendship| %>
              <% user = find_user(user_id, friendship) %>
                 <!-- User info-->
-                <div class="note col-xs-12 col-sm-6 col-md-3" >
+                <div class="note col-xs-12 col-sm-6 col-md-3 card-style" >
                   <!-- User icon-->
                   <div class="col-lg-2 col-md-2 col-xs-12">
                     <div class="row" align="center">
@@ -112,7 +112,7 @@
             <% end %>    
           <% else %>
             <!-- User info-->
-            <div class="note col-xs-12 col-sm-4 col-md-4" style="background-color: #ccffcc">
+            <div class="note col-xs-12 col-sm-4 col-md-4" style="background-color: white">
               <!-- User name-->
               <div class="row" align="center">
                 <div class="col-xs-12" style="height: 50px; justify-content: center; display: flex; padding-top: 10px"> 
@@ -127,14 +127,14 @@
       <!-- Add new friends -->
       <div class="row page-title">
         <div class="title_left">
-          <div class="x_panel">
+          <div class="x_panel panel-style">
             <h4 style="margin: 9px 0"><strong>Add new friends </strong></h4> 
           </div>
         </div>
       </div>
       <div class="row">
         <%  get_new_friendships(user_id).each do |user| %>
-          <div class="note col-xs-12 col-sm-4 col-md-4">
+          <div class="note col-xs-12 col-sm-4 col-md-4 card-style">
             <!-- User icon-->
             <div class="col-md-2 col-lg-2" align="center">
               <div class="row" align="center">
