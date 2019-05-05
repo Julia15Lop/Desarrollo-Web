@@ -24,12 +24,10 @@ module FriendshipsHelper
 	def find_user(user_id, friendship)
 		user = User.where(id: user_id).first
 		if friendship.user_id.eql? user.id 
-			id = friendship.user_id
-		else
 			id = friendship.friend_id
+		else
+			id = friendship.user_id
 		end
-		
-		byebug
   		User.find(id)
   	end
 
