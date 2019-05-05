@@ -43,18 +43,18 @@
                 </div>
               </div>
               <div class="row" style="padding-left:25px; padding-right: 25px ">
-                <div class="col-xs-4 center">
-                  <%= link_to 'Show', { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
+                <div class="col-xs-3 center">
+                  <%= link_to '<i class="fa fa-eye"></i>'.html_safe, { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
                 </div>
                 <% if note.note_permission&.user_ids&.include?(user_id) %>
-                    <div class="col-xs-4 center">
-                      <%= link_to 'Edit', { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>
                     </div>
-                    <div class="col-xs-4 center">
-                      <%= link_to 'Share', user_note_share_path({note_id: note.id}), class: 'btn btn-default', method: :get %>
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-share"></i>'.html_safe, user_note_share_path({note_id: note.id}), class: 'btn btn-default', method: :get %>
                     </div>
-                    <div class="col-xs-4 center">
-                      <%= link_to 'Delete', { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
+                    <div class="col-xs-3 center">
+                      <%= link_to '<i class="fa fa-trash"></i>'.html_safe, { controller: 'notes', action: 'destroy', id: note }, class: 'btn btn-danger',
                       method: :delete,
                       data: { confirm: 'Are you sure?' } %>
                     </div>

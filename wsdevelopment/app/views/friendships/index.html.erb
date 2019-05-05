@@ -62,7 +62,7 @@
       </div>
       <div class="row">
         <% get_friendships(user_id, 'confirmed').each do |friendship|  %>
-           <% user = find_user(session[:user_name], friendship) %>
+           <% user = find_user(friendship.user_id, friendship) %>
               <!-- User info-->
               <div class="note col-xs-12 col-sm-6 col-md-3">
                 <!-- User icon-->
