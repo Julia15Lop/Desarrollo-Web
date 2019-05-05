@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :friendships, only: [:index, :create, :update, :destroy]
   end
 
+  resources :note_permissions do
+  end
+
   root 'welcome#index'
 end

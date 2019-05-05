@@ -25,13 +25,14 @@ class NotesController < ApplicationController
     end
   end
 
-
   def create
     if logged?
       @user = User.find(params[:user_id])
       @note = @user.notes.create(note_params)
 
       if @note.save
+        np = NotePermission.create({note: @note})
+        np.user << @user
         redirect_to user_notes_url(@user)
       else
         render 'new'
