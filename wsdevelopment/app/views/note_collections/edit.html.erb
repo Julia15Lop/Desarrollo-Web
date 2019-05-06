@@ -47,37 +47,37 @@
           </div>
         </div>
       </div>
-      <div class="row">
-          <% %>
-          <!-- User info-->
-          <div class="note col-xs-12 col-sm-6 col-md-3">
-            <!-- User icon-->
-            <div class="col-lg-2 col-md-2 col-xs-12">
-              <div class="row" align="center">
-                <i class="fa fa-user user-icon" ></i>
+        <div class="row">
+        <% user_id = get_user_id(session[:user_name]) %>
+        <% find_notes_in_collection(@note_collection.id).each do |note|  %>
+          <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 200px">
+              <div class="row">
+                <% if note.image.url %>
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div >
+                      <span>
+                        <%= image_tag(note.image.url, alt: 'Image', class: 'note-image') if note.image? %>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>  
+                <div class="note-title col-xs-12 col-sm-4 col-md-4 col-lg-4" style="padding-left: 30px">
+                  <%= note.title %>
+                </div>
               </div>
-            </div>
-            <!-- /User icon-->
-            <!-- User name-->
-            <div class="col-lg-8 col-md-8">
-              <div class="note-title col-xs-12">
+              <div class="row" style="height: 40%">
+                <div class="note-text col-xs-12 col-lg-12 col-md-12">
+                  <%= note.text %>
+                </div>
+              </div>
+              <div class="row" style="padding-left:25px; padding-right: 25px ">
+                <div class="col-xs-12" align="right">
+                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, user_destroy_note_to_path({id: @note_collection.id, user_id: user_id, note_id: note.id}), :method => :post, class: 'btn btn-danger'%>
+                </div>           
                 
               </div>
-              <div class="note-text col-xs-12">
-                
-              </div>
             </div>
-            <!-- /User name-->
-            <!-- Delete button -->
-            <div class="col-md-2 col-lg-2">
-              <div class="row center" style="padding-top: 2rem">
- 
-              </div>
-            </div>
-            <!-- /Delete button -->
-          </div>
-          <!-- User info-->
-        
+        <% end %>
       </div>
     </div>
 

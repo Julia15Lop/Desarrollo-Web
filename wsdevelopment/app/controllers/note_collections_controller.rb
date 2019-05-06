@@ -39,4 +39,12 @@ class NoteCollectionsController < ApplicationController
     end
   end
 
+  def destroy_note_to
+    if session[:user_name]
+      note = Note.find(params[:note_id])
+      @note_collection = NoteCollection.find(params[:id])
+      @note_collection.note.delete(Note.find(params[:note_id]))
+      redirect_to user_note_collections_url
+    end
+  end
 end
