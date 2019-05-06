@@ -16,10 +16,11 @@ class NotesController < ApplicationController
 
   def update
     if logged?
+      user = User.where(user_name: session[:user_name]).first
       @note = Note.find(params[:id])
-
+      
       if @note.update(note_params)
-        redirect_to user_notes_url(@note.user_id)
+        redirect_to user_notes_url(user.id)
       else
         render 'edit'
       end
