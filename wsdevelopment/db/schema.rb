@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_103914) do
+ActiveRecord::Schema.define(version: 2019_05_05_214235) do
 
   create_table "collections", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,25 @@ ActiveRecord::Schema.define(version: 2019_05_05_103914) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "note_collections", force: :cascade do |t|
+    t.integer "creator_id"
+    t.text "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "note_collections_notes", force: :cascade do |t|
+    t.integer "note_id"
+    t.integer "note_collection_id"
+    t.index ["note_id", "note_collection_id"], name: "note_index"
+  end
+
+  create_table "note_collections_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "note_collection_id"
+    t.index ["user_id", "note_collection_id"], name: "collection_user_index"
   end
 
   create_table "note_permissions", force: :cascade do |t|
