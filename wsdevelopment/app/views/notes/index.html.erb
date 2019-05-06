@@ -40,7 +40,7 @@
                   <%= note.title %>
                 </div>
               </div>
-              <div class="row" style="height: 40%">                
+              <div class="row" style="height: 40%">
                 <div class="note-text col-xs-12 col-lg-12 col-md-12">
                   <%= note.text %>
                 </div>
@@ -49,7 +49,6 @@
                 <div class="col-xs-3 center">
                   <%= link_to '<i class="fa fa-eye"></i>'.html_safe, { controller: 'notes', action: 'show', id: note }, class: 'btn btn-default' %>
                 </div>
-                <% byebug %>
                 <% if note.note_permission&.user_ids&.include?(get_user_id(session[:user_name])) %>
                     <div class="col-xs-3 center">
                       <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, { controller: 'notes', action: 'edit', id: note }, class: 'btn btn-default' %>

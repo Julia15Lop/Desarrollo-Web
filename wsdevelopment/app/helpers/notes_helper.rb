@@ -31,6 +31,10 @@ module NotesHelper
     User.where.not(id: note.note_permission.user_ids)
   end
 
+  def get_notes(user_id)
+    note = Note.where(user_id: user_id)
+  end
+
   def logged?
     session[:user_name]
   end
