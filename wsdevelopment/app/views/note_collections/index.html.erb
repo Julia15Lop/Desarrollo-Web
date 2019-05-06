@@ -1,7 +1,7 @@
 <% if !logged? %>
   <%= controller.redirect_to root_path %>
 <% else %>
-  <div class="col-md-9 col-lg-9 right_col">
+  <div class="col-md-9 col-lg-9 right_col" >
     <div class="row page-title">
       <div class="title_left">
         <div class="x_panel panel-style">
@@ -31,8 +31,8 @@
       </div>
     <% end %>
 
-    <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 200px; ">
-              <div class="row" style="font-size: 30px; display: flex; justify-content: center; padding-top:85px">                  
+    <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 150px; ">
+              <div class="row" style="font-size: 30px; display: flex; justify-content: center; padding-top:60px">                  
                   <%= link_to '<i class="fa fa-plus"></i>'.html_safe, user_note_collections_path(:user_id => user_id, :title => "<new collection>"), :method => :create  %>
               </div>
             </div>
