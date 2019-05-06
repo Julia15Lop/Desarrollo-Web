@@ -50,6 +50,7 @@
         <div class="row">
         <% user_id = get_user_id(session[:user_name]) %>
         <% find_notes_in_collection(@note_collection.id).each do |note|  %>
+          
           <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 200px">
               <div class="row">
                 <% if note.image.url %>
@@ -94,6 +95,7 @@
       <div class="row">
         <% user_id = get_user_id(session[:user_name]) %>
         <% get_notes(user_id).each do |note|  %>
+        <% if !@note_collection.note.include?(Note.find(note.id))%>
           <div class="note col-xs-12 col-sm-6 col-md-3" style="height: 200px">
               <div class="row">
                 <% if note.image.url %>
@@ -121,6 +123,7 @@
                 
               </div>
             </div>
+          <% end %>   
         <% end %>
       </div>
     </div>
